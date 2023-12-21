@@ -1,0 +1,49 @@
+A database is a collection of related data.
+By data, we mean known facts that can be recorded and that have implicit meaning. 
+For example, consider the names, telephone numbers, and addresses of the people you know. You may have recorded this data in an indexed address book or you may have stored it on a hard drive, using a personal computer and software such as Microsoft Access or Excel. This collection of related data with an implicit meaning is a database.
+
+Properties of Database : 1. A database represents some aspect of the real world, sometimes called the miniworld or the universe of discourse (UoD). Changes to the miniworld are reflected in the database. 2. A database is a logically coherent collection of data with some inherent meaning. A random assortment of data cannot correctly be referred to as a database 3. A database is designed, built, and populated with data for a specific purpose. It has an intended group of users and some preconceived applications in which these users are interested
+
+The end users of a database may perform business transactions (for example, a customer buys a camera) or events may happen (for example, an employee has a baby) that cause the information in the database to change. 
+In order for a database to be accurate and reliable at all times, it must be a true reflection of the miniworld that it represents; therefore, changes must be reflected in the database as soon as possible.
+
+A database can be of any size and complexity. For example, the list of names and addresses referred to earlier may consist of only a few hundred records, each with a simple structure. 
+
+An example of a large commercial database is Amazon.com. It contains data for over 20 million books, CDs, videos, DVDs, games, electronics, apparel, and other items. 
+The database occupies over 2 terabytes (a terabyte is 1012 bytes worth of storage) and is stored on 200 different computers (called servers). 
+About 15 million visitors access Amazon.com each day and use the database to make purchases. The database is continually updated as new books and other items are added to the inventory and stock quantities are updated as purchases are transacted. 
+About 100 people are responsible for keeping the Amazon database up-to-date.
+
+A database may be generated and maintained manually or it may be computerized. For example, a library card catalog is a database that may be created and maintained manually. 
+A computerized database may be created and maintained either by a group of application programs written specifically for that task or by a database management system.
+
+A database management system (DBMS) is a collection of programs that enables users to create and maintain a database.
+The DBMS is a general-purpose software system that facilitates the processes of defining, constructing, manipulating, and sharing databases among various users and applications. 
+
+Defining a database involves specifying the data types, structures, and constraints of the data to be stored in the database. 
+The database definition or descriptive information is also stored by the DBMS in the form of a database catalog or dictionary; it is called meta-data
+
+Constructing the database is the process of storing the data on some storage medium that is controlled by the DBMS.
+
+Manipulating a database includes functions such as querying the database to retrieve specific data, updating the database to reflect changes in the miniworld, and generating reports from the data. 
+Sharing a database allows multiple users and programs to access the database simultaneously.
+
+An application program accesses the database by sending queries or requests for data to the DBMS. 
+A query2 typically causes some data to be retrieved; a transaction may cause some data to be read and some data to be written into the database.
+
+Other important functions provided by the DBMS include protecting the database and maintaining it over a long period of time. 
+Protection includes system protection against hardware or software malfunction (or crashes) and security protection against unauthorized or malicious access.
+
+A typical large database may have a life cycle of many years, so the DBMS must be able to maintain the database system by allowing the system to evolve as requirements change over time.
+
+It is not absolutely necessary to use general-purpose DBMS software to implement a computerized database. 
+We could write our own set of programs to create and maintain the database, in effect creating our own special-purpose DBMS software. 
+In either case—whether we use a general-purpose DBMS or not—we usually have to deploy a considerable amount of complex software. 
+In fact, most DBMSs are very complex software systems.
+
+Database designers are responsible for identifying the data to be stored in the database and for choosing appropriate structures to represent and store this data. These tasks are mostly undertaken before the database is actually implemented and populated with data.
+It is the responsibility of database designers to communicate with all prospective database users in order to understand their requirements and to create a design that meets these requirements. 
+In many cases, the designers are on the staff of the DBA and may be assigned other staff responsibilities after the database design is completed. 
+Database designers typically interact with each potential group of users and develop views of the database that meet the data and processing requirements of these groups. 
+Each view is then analyzed and integrated with the views of other user groups. 
+The final database design must be capable of supporting the requirements of all user groups

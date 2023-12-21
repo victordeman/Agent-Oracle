@@ -1,0 +1,11 @@
+Transactions: multiple DB operations handled as an atomic unit
+
+A transaction is an executing program that includes some database operations, such as reading from the database, or applying insertions, deletions, or updates to the database
+
+At the end of the transaction, it must leave the database in a valid or consistent state that satisfies all the constraints specified on the database schema.
+
+A single transaction may involve any number of retrieval operations , and any number of update operations. These retrievals and updates will together form an atomic unit of work against the database. 
+
+For example, a transaction to apply a bank withdrawal will typically read the user account record, check if there is a sufficient balance, and then update the record by the withdrawal amount.
+
+A large number of commercial applications running against relational databases in online transaction processing (OLTP) systems are executing transactions at rates that reach several hundred per second. 

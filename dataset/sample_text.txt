@@ -1,0 +1,227 @@
+=== Page 116 ===
+Z
+chapter I
+
+Basic SQL
+
+‘Ti SQL language may be considered one of the
+major reasons for the commercial success of rela-
+tional databases. Because it became a standard for relational databases, users were
+less concerned about migrating their database applications from other types of
+database systems—for example, network or hierarchical systems—to relational sys-
+tems. This is because even if the users became dissatisfied with the particular rela-
+tional DBMS product they were using, converting to another relational DBMS
+product was not expected to be too expensive and time-consuming because both
+systems followed the same language standards. In practice, of course, there are many
+differences between various commercial relational DBMS packages. However, if the
+user is diligent in using only those features that are part of the standard, and if both
+relational systems faithfully support the standard, then conversion between the two
+systems should be much simplified. Another advantage of having such a standard is
+that users may write statements in a database application program that can access
+data stored in two or more relational DBMSs without having to change the database
+sublanguage (SQL) if both relational DBMSs support standard SQL.
+
+This chapter presents the main features of the SQL standard for commercial rela-
+tional DBMSs, whereas Chapter 3 presented the most important concepts underly-
+ing the formal relational data model. In Chapter 6 (Sections 6.1 through 6.5) we
+shall discuss the relational algebra operations, which are very important for under-
+standing the types of requests that may be specified on a relational database. They
+are also important for query processing and optimization in a relational DBMS, as
+we shall see in Chapter 19. However, the relational algebra operations are consid-
+ered to be too technical for most commercial DBMS users because a query in rela-
+tional algebra is written as a sequence of operations that, when executed, produces
+the required result. Hence, the user must specify how—that is, in what order—to
+execute the query operations. On the other hand, the SQL language provides a
+
+87
+
+=== Page 117 ===
+88
+
+Chapter 4 Basic SOL
+
+higher-level declarative language interface, so the user only specifies what the result
+is to be, leaving the actual optimization and decisions on how to execute the query
+to the DBMS. Although SQL includes some features from relational algebra, it is
+based to a greater extent on the tuple relational calculus, which we describe in
+Section 6.6. However, the SQL syntax is more user-friendly than either of the two
+formal languages.
+
+The name SQL is presently expanded as Structured Query Language. Originally,
+SQL was called SEQUEL (Structured English QUEry Language) and was designed
+and implemented at IBM Research as the interface for an experimental relational
+database system called SYSTEM R. SQL is now the standard language for commer-
+cial relational DBMSs. A joint effort by the American National Standards Institute
+(ANSI) and the International Standards Organization (ISO) has led to a standard
+version of SQL (ANSI 1986), called SQL-86 or SQL1. A revised and much expanded
+standard called SQL-92 (also referred to as SQL2) was subsequently developed. The
+next standard that is well-recognized is SQL:1999, which started out as SQL3. Two
+later updates to the standard are SQL:2003 and SQL:2006, which added XML fea-
+tures (see Chapter 12) among other updates to the language. Another update in
+2008 incorporated more object database features in SQL (see Chapter 11). We will
+try to cover the latest version of SQL as much as possible.
+
+SQL is a comprehensive database language: It has statements for data definitions,
+queries, and updates. Hence, it is both a DDL and a DML. In addition, it has facili-
+ties for defining views on the database, for specifying security and authorization, for
+defining integrity constraints, and for specifying transaction controls. It also has
+rules for embedding SQL statements into a general-purpose programming language
+such as Java, COBOL, or C/C++.!
+
+The later SQL standards (starting with SQL:1999) are divided into a core specifica-
+tion plus specialized extensions. The core is supposed to be implemented by all
+RDBMS vendors that are SQL compliant. The extensions can be implemented as
+optional modules to be purchased independently for specific database applications
+such as data mining, spatial data, temporal data, data warehousing, online analytical
+processing (OLAP), multimedia data, and so on.
+
+Because SQL is very important (and quite large), we devote two chapters to its fea-
+tures. In this chapter, Section 4.1 describes the SQL DDL commands for creating
+schemas and tables, and gives an overview of the basic data types in SQL. Section 4.2
+presents how basic constraints such as key and referential integrity are specified.
+Section 4.3 describes the basic SQL constructs for specifying retrieval queries, and
+Section 4.4 describes the SQL commands for insertion, deletion, and data updates.
+
+In Chapter 5, we will describe more complex SQL retrieval queries, as well as the
+ALTER commands for changing the schema. We will also describe the CREATE
+ASSERTION statement, which allows the specification of more general constraints
+on the database. We also introduce the concept of triggers, which is presented in
+
+
+
+‘Originally, SOL had statements for creating and dropping indexes on the files that represent relations,
+but these have been dropped from the SQL standard for some time.
+
+=== Page 118 ===
+4.1 SQL Data Definition and Data Types
+
+more detail in Chapter 26 and we will describe the SQL facility for defining views on
+the database in Chapter 5. Views are also called virtual or derived tables because they
+present the user with what appear to be tables; however, the information in those
+tables is derived from previously defined tables.
+
+Section 4.5 lists some SQL features that are presented in other chapters of the book;
+these include transaction control in Chapter 21, security/authorization in Chapter
+24, active databases (triggers) in Chapter 26, object-oriented features in Chapter 11,
+and online analytical processing (OLAP) features in Chapter 29. Section 4.6 sum-
+marizes the chapter. Chapters 13 and 14 discuss the various database programming
+techniques for programming with SQL.
+
+4.1 SQL Data Definition and Data Types
+
+SQL uses the terms table, row, and column for the formal relational model terms
+relation, tuple, and attribute, respectively. We will use the corresponding terms inter-
+changeably. The main SQL command for data definition is the CREATE statement,
+which can be used to create schemas, tables (relations), and domains (as well as
+other constructs such as views, assertions, and triggers). Before we describe the rel-
+evant CREATE statements, we discuss schema and catalog concepts in Section 4.1.1
+to place our discussion in perspective. Section 4.1.2 describes how tables are created,
+and Section 4.1.3 describes the most important data types available for attribute
+specification. Because the SQL specification is very large, we give a description of
+the most important features. Further details can be found in the various SQL stan-
+dards documents (see end-of-chapter bibliographic notes).
+
+4.1.1 Schema and Catalog Concepts in SQL
+
+Early versions of SQL did not include the concept of a relational database schema; all
+tables (relations) were considered part of the same schema. The concept of an SQL
+schema was incorporated starting with SQL2 in order to group together tables and
+other constructs that belong to the same database application. An SQL schema is
+identified by a schema name, and includes an authorization identifier to indicate
+the user or account who owns the schema, as well as descriptors for each element in
+the schema. Schema elements include tables, constraints, views, domains, and other
+constructs (such as authorization grants) that describe the schema. A schema is cre-
+ated via the CREATE SCHEMA statement, which can include all the schema elements’
+definitions. Alternatively, the schema can be assigned a name and authorization
+identifier, and the elements can be defined later. For example, the following state-
+ment creates a schema called COMPANY, owned by the user with authorization iden-
+tifier ‘smith. Note that each statement in SQL ends with a semicolon.
+
+CREATE SCHEMA COMPANY AUTHORIZATION ‘Jsmith’;
+
+In general, not all users are authorized to create schemas and schema elements. The
+privilege to create schemas, tables, and other constructs must be explicitly granted
+to the relevant user accounts by the system administrator or DBA.
+
+89
+
+
+4.3 Basic Retrieval Queries in SQL
+
+SQL has one basic statement for retrieving information from a database: the
+SELECT statement. The SELECT statement is not the same as the SELECT operation
+of relational algebra, which we discuss in Chapter 6. There are many options and
+flavors to the SELECT statement in SQL, so we will introduce its features gradually.
+We will use sample queries specified on the schema of Figure 3.5 and will refer to
+the sample database state shown in Figure 3.6 to show the results of some of the
+sample queries. In this section, we present the features of SQL for simple retrieval
+queries. Features of SQL for specifying more complex retrieval queries are presented
+in Section 5.1.
+
+Before proceeding, we must point out an important distinction between SQL and the
+formal relational model discussed in Chapter 3: SQL allows a table (relation) to
+have two or more tuples that are identical in all their attribute values. Hence, in gen-
+eral, an SQL table is not a set of tuples, because a set does not allow two identical
+members; rather, it is a multiset (sometimes called a bag) of tuples. Some SQL rela-
+tions are constrained to be sets because a key constraint has been declared or because
+the DISTINCT option has been used with the SELECT statement (described later in
+this section). We should be aware of this distinction as we discuss the examples.
+
+4.3.1 The SELECT-FROM-WHERE Structure
+of Basic SOL Queries
+Queries in SQL can be very complex. We will start with simple queries, and then
+
+progress to more complex ones in a step-by-step manner. The basic form of the
+SELECT statement, sometimes called a mapping or a select-from-where block, is
+
+97
+
+=== Page 127 ===
+98
+
+Chapter 4 Basic SQL
+
+formed of the three clauses SELECT, FROM, and WHERE and has the following
+form:?
+
+SELECT <attribute list>
+FROM <table list>
+WHERE <condition>;
+
+where
+
+m <attribute list> is a list of attribute names whose values are to be retrieved by
+the query.
+m <table list> is a list of the relation names required to process the query.
+
+= <condition> is a conditional (Boolean) expression that identifies the tuples
+to be retrieved by the query.
+
+In SQL, the basic logical comparison operators for comparing attribute values with
+one another and with literal constants are =, <, <=, >, >=, and <>. These corre-
+spond to the relational algebra operators =, <, <, >, 2, and 4, respectively, and to the
+C/C++ programming language operators =, <, <=, >, >=, and !=. The main syntac-
+tic difference is the not equal operator. SQL has additional comparison operators
+that we will present gradually.
+
+We illustrate the basic SELECT statement in SQL with some sample queries. The
+queries are labeled here with the same query numbers used in Chapter 6 for easy
+cross-reference.
+
+Query 0. Retrieve the birth date and address of the employee(s) whose name
+is ‘John B. Smith’.
+
+Qo: SELECT Bdate, Address
+FROM EMPLOYEE
+WHERE Fname=John’ AND Minit=“B’ AND Lname=‘Smith’;;
+
+This query involves only the EMPLOYEE relation listed in the FROM clause. The
+query selects the individual EMPLOYEE tuples that satisfy the condition of the
+WHERE clause, then projects the result on the Bdate and Address attributes listed in
+the SELECT clause.
+
+The SELECT clause of SQL specifies the attributes whose values are to be retrieved,
+which are called the projection attributes, and the WHERE clause specifies the
+Boolean condition that must be true for any retrieved tuple, which is known as the
+selection condition. Figure 4.3(a) shows the result of query QO on the database of
+Figure 3.6.
