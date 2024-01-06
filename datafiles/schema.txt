@@ -1,6 +1,12 @@
+In any data model, it is important to distinguish between the description of the database and the database itself. The description of a database is called the database schema, which is specified during database design and is not expected to change frequently. 
+#$%
+Most data models have certain conventions for displaying schemas as diagrams. A displayed schema is called a schema diagram.
+#$%
+A schema diagram displays only some aspects of a schema, such as the names of record types and data items, and some types of constraints. Other aspects are not specified in the schema diagram.
+#$%
 Early versions of SQL did not include the concept of a relational database schema; all tables (relations) were considered part of the same schema. The concept of an SQL schema was incorporated starting with SQL2 in order to group together tables and other constructs that belong to the same database application. An SQL schema is identified by a schema name, and includes an authorization identifier to indicate the user or account who owns the schema, as well as descriptors for each element in the schema. Schema elements include tables, constraints, views, domains, and other constructs (such as authorization grants) that describe the schema. A schema is created via the CREATE SCHEMA statement, which can include all the schema elements’ definitions. Alternatively, the schema can be assigned a name and authorization identifier, and the elements can be defined later. 
-
+#$%
 For example, the following statement creates a schema called COMPANY, owned by the user with authorization identifier ‘smith. Note that each statement in SQL ends with a semicolon - CREATE SCHEMA COMPANY AUTHORIZATION ‘Jsmith’;
-
+#$%
 The syntax for creating a schema is as follows : - CREATE SCHEMA <schema_name> AUTHORIZATION <username>; In general, not all users are authorized to create schemas and schema elements. The privilege to create schemas, tables, and other constructs must be explicitly granted to the relevant user accounts by the system administrator or DBA.
-
+#$%

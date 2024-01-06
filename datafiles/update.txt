@@ -1,0 +1,15 @@
+The UPDATE command is used to modify attribute values of one or more selected tuples. 
+#$%
+As in the DELETE command, a WHERE clause in the UPDATE command selects the tuples to be modified from a single relation. 
+#$%
+However, updating a primary key value may propagate to the foreign key values of tuples in other relations if such a referential triggered action is specified in the referential integrity constraints of the DDL. 
+#$%
+An additional SET clause in the UPDATE command specifies the attributes to be modified and their new values. 
+#$%
+For example, to change the location and controlling department number of project number 10 to "Bellaire" and 5, respectively, we use: U5: UPDATE PROJECT SET Plocation = "Bellaire", Dnum = 5 WHERE Pnumber=10;
+#$%
+Several tuples can be modified with a single UPDATE command. 
+#$%
+An example is to give all employees in the Research department a 10 percent raise in salary. In this request, the modified Salary value depends on the original Salary value in each tuple, so two references to the Salary attribute are needed. In the SET clause, the reference to the Salary attribute on the right refers to the old Salary value before modification, and the one on the left refers to the new Salary value after modification: U6: UPDATE EMPLOYEE SET Salary = Salary * 1.1 WHERE Dno = 5;
+#$%
+It is also possible to specify NULL or DEFAULT as the new attribute value. Notice that each UPDATE command explicitly refers to a single relation only. To modify multiple relations, we must issue several UPDATE commands.

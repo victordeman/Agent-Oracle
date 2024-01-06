@@ -1,0 +1,7 @@
+The SQL ALTER TABLE statement is used for modifying the database tables and constraints.
+#$%
+The definition of a base table or of other named schema elements can be changed by using the ALTER command. For base tables, the possible alter table actions include adding or dropping a column (attribute), changing a column definition, and adding or dropping table constraints. 
+#$%
+For example, to add an attribute for keeping track of jobs of employees to the EMPLOYEE base relation in the COMPANY schema, we can use the command: ALTER TABLE COMPANY.EMPLOYEE ADD COLUMN Job VARCHAR(1 2); We must still enter a value for the new attribute Job for each individual EMPLOYEE tuple. This can be done either by specifying a default clause or by using the UPDATE.
+#$%
+It is also possible to alter a column definition by dropping an existing default clause or by defining a new default clause. The following examples illustrate this clause: ALTER TABLE COMPANY.DEPARTMENT ALTER COLUMN Mgr_ssn DROP DEFAULT; or, ALTER TABLE COMPANY.DEPARTMENT ALTER COLUMN Mgr_ssn SET DEFAULT ‘333445555’;

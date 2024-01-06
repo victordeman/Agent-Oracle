@@ -37,9 +37,9 @@ def get_data(tx,key):
     except:
         pass
 
-
+#while(true):
 nodes=[]
-question = 'what is the syntax of CREATE command'
+question = 'what is database'
 
 
 # Connect to the Neo4j database

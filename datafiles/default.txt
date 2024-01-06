@@ -1,0 +1,7 @@
+It is also possible to define a default value for an attribute by appending the clause DEFAULT <value> to an attribute definition. 
+#$%
+The default value is included in any new tuple if an explicit value is not provided for that attribute. 
+#$%
+If no default clause is specified, the default default value is NULL for attributes that do not have the NOT NULL constraint.
+#$%
+Example: CREATE TABLE EMPLOYEE( . . . , Dno INT NOT NULL DEFAULT 1, CONSTRAINT EMPPK PRIMARY KEY (Ssn), CONSTRAINT EMPSUPERFK FOREIGN KEY (Super_ssn) REFERENCES EMPLOYEE(Ssn) ON DELETE SET NULL ON UPDATE CASCADE, CONSTRAINT EMPDEPTFK FOREIGN KEY(Dno) REFERENCES DEPARTMENT(Dnumber) ON DELETE SET DEFAULT ON UPDATE CASCADE);

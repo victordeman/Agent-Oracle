@@ -1,0 +1,11 @@
+Persistent objects are stored in the database and persist after program termination. 
+#$%
+The typical mechanisms for making an object persistent are naming and reachability.
+#$%
+The naming mechanism involves giving an object a unique persistent name within a particular database. This persistent object name can be given via a specific statement or operation in the program. 
+#$%
+The named persistent objects are used as entry points to the database through which users and applications can start their database access. 
+#$%
+Obviously, it is not practical to give names to all objects in a large database that includes thousands of objects, so most objects are made persistent by using the second mechanism, called reachability. 
+#$%
+The reachability mechanism works by making the object reachable from some other persistent object. An object B is said to be reachable from an object A if a sequence of references in the database lead from object A to object B.

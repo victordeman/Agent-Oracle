@@ -1,0 +1,9 @@
+The DELETE command removes tuples from a relation. It includes a WHERE clause, similar to that used in an SQL query, to select the tuples to be deleted. 
+#$%
+Tuples are explicitly deleted from only one table at a time. However, the deletion may propagate to tuples in other relations if referential triggered actions are specified in the referential integrity constraints of the DDL.
+#$%
+Depending on the number of tuples selected by the condition in the WHERE clause, zero, one, or several tuples can be deleted by a single DELETE command. 
+#$%
+A missing WHERE clause specifies that all tuples in the relation are to be deleted; however, the table remains in the database as an empty table. We must use the DROP TABLE command to remove the table definition. 
+#$%
+The DELETE commands in U4A and U4D, if applied independently to the database, will delete zero and all tuples, respectively, from the EMPLOYEE relation: U4A: DELETE FROM EMPLOYEE WHERE Lname= "Brown"; U4D: DELETE FROM EMPLOYEE;

@@ -1,0 +1,5 @@
+Once the database schemas are compiled and the database is populated with data, users must have some means to manipulate the database. 
+#$%
+Typical manipulations include retrieval, insertion, deletion, and modification of the data. 
+#$%
+The DBMS provides a set of operations or a language called the data manipulation language (DML) for these purposes.

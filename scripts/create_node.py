@@ -47,9 +47,9 @@ def create_node(uri, user, password, node_data):
         q+=';' 
         
         query=(q)
-        with open('test.txt', 'w', encoding='utf-8') as file:
-            # Write the string to the file
-            file.write(q)
+        # with open('test.txt', 'w', encoding='utf-8') as file:
+        #     # Write the string to the file
+        #     file.write(q)
         result = session.run(query, node_data)
         print("Node created")
     driver.close()
@@ -78,6 +78,7 @@ clear_database(NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD)
 directory = 'datafiles'
 file_names = os.listdir(directory)
 
+
 for file_name in file_names:
     keyword = file_name.split('.')[0]
     print(keyword)
@@ -93,7 +94,15 @@ for file_name in file_names:
             continue
         else:
             count+=1
-            line = line.strip('\n')
+            line = line.strip('#$%')
+            if line=='':
+                continue
+            if line=='\n':
+                continue
+            if line=='#$%\n':
+                continue
+            if '#$%' in line:
+                continue
             emb = create_embedding(line)
             key = keyword+'_exp'+str(count)
             dict_elem = {key:{'disc':line,'emb':emb}}

@@ -1,0 +1,5 @@
+Entity-Relationship schemas can be represented diagrammatically as ER diagrams.
+#$%
+An ER schema for a database can be designed by first defining the entity types and their attributes and then refining the design to include relationship types. 
+#$%
+Several types of attributes occur in the ER model: simple versus composite, single-valued versus multivalued, and stored versus derived.

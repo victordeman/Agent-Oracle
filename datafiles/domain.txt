@@ -1,0 +1,8 @@
+A domain D is a set of atomic values. By atomic we mean that each value in the domain is indivisible as far as the formal relational model is concerned. 
+#$%
+A common method of specifying a domain is to specify a data type from which the data values forming the domain are drawn.
+#$%
+A data type or format is also specified for each domain.
+#$%
+A domain is thus given a name, data type, and format.
+

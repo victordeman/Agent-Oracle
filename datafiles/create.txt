@@ -1,7 +1,7 @@
 The CREATE TABLE command is used to specify a new relation by giving it a name and specifying its attributes and initial constraints. The attributes are specified first, and each attribute is given a name, a data type to specify its domain of values, and any attribute constraints, such as NOT NULL. The key, entity integrity, and referential integrity constraints can be specified within the CREATE TABLE statement after the attributes are declared, or they can be added later using the ALTER TABLE command. 
-
+#$%
 Typically, the SQL schema in which the relations are declared is implicitly specified in the environment in which the CREATE TABLE statements are executed. Alternatively, we can explicitly attach the schema name to the relation’s name, separated by a period. For example, by writing CREATE TABLE COMPANY.EMPLOYEE ... rather than CREATE TABLE EMPLOYEE ...
-
+#$%
 The relations declared through CREATE TABLE statements are called base tables (or base relations); this means that the relation and its tuples are actually created and stored as a file by the DBMS. Base relations are distinguished from virtual relations, created through the CREATE VIEW statement which may or may not correspond to an actual physical file. In SQL, the attributes in a base table are considered to be ordered in the sequence in which they are specified in the CREATE TABLE statement. However, rows (tuples) are not considered to be ordered within a relation.
-
+#$%
 Syntax is as mentioned : CREATE TABLE table_name (column1 datatype, column2 datatype,datatype,....);

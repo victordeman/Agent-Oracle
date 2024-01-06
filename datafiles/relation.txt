@@ -1,0 +1,10 @@
+The relational model represents the database as a collection of relations. 
+#$%
+Informally, each relation resembles a table of values or, to some extent, a flat file of records. It is called a flat file because each record has a simple linear or flat structure. 
+#$%
+However, there are important differences between relations and files.
+#$%
+When a relation is thought of as a table of values, each row in the table represents a collection of related data values. A row represents a fact that typically corresponds to a real-world entity or relationship. The table name and column names are used to help to interpret the meaning of the values in each row.
+#$%
+A relation (or relation state)4 r of the relation schema R(A1, A2, ..., An), also denoted by r(R), is a set of n-tuples r = {t1, t2, ..., tm}. Each n-tuple t is an ordered list of n values t =<v1, v2, ..., vn>, where each value vi, 1 ≤ i ≤ n, is an element of dom(Ai) or is a special NULL value. 
+

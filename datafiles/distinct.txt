@@ -1,0 +1,9 @@
+An SQL table with a key is restricted to being a set, since the key value must be distinct in each tuple. If we do want to eliminate duplicate tuples from the result of an SQL query, we use the keyword DISTINCT in the SELECT clause, meaning that only distinct tuples should remain in the result. 
+#$%
+In general, a query with SELECT DISTINCT eliminates duplicates, whereas a query with SELECT ALL does not.
+#$%
+Specifying SELECT with neither ALL nor DISTINCT is equivalent to SELECT ALL. 
+#$%
+For example, Q11 retrieves the salary of every employee; if several employees have the same salary, that salary value will appear as many times in the result of the query. Qi1: SELECT ALL Salary FROM EMPLOYEE;
+#$%
+If we are interested only in distinct salary values, we want each value to appear only once, regardless of how many employees earn that salary. By using the keyword DISTINCT as in Q11A, we accomplish this. Q11A: SELECT DISTINCT Salary FROM EMPLOYEE;

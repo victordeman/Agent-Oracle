@@ -1,19 +1,19 @@
 The basic data types available for attributes include numeric, character string, Sit-string, Boolean, date, and time.
-
+#$%
 Numeric data types include integer numbers of various sizes (INTEGER orINT, and SMALLINT) and floating-point (real) numbers of various precision (FLOAT or REAL, and DOUBLE PRECISION). Formatted numbers can be declared by using DECIMAL (i,j) —or DEC(i,j) or NUMERIC(i,j)—-where i, the precision, is the total number of decimal digits and j, the scale, is the number of digits after the decimal point. The default for scale is zero, and the default for precision is implementation-defined.
-
+#$%
 Character-string data types are either fixed length—CHAR(n) or CHARACTER(n), where n is the number of characters—or varying length— VARCHAR(n) or CHAR VARYING(1) or CHARACTER VARYING(n), where 71 is the maximum number of characters. When specifying a literal string value, it is placed between single quotation marks (apostrophes), and it is case sensitive (a distinction is made between uppercase and lowercase).* For fixed-length strings, a shorter string is padded with blank characters to the right. For example, if the value ‘Smith’ is for an attribute of type CHAR(10), it is padded with five blank characters to become ‘Smith ” if needed. Padded blanks are generally ignored when strings are compared. For comparison purposes, strings are considered ordered in alphabetic (or lexicographic) order; if a string str] appears before another string str2 in alphabetic order, then str1 is considered to be less than str2.‘ There is also a concatenation operator denoted by || (double vertical bar) that can concatenate two strings in SQL. For example, ‘abc’ || “XYZ’ results in a single string ‘abcXYZ* 
-
+#$%
 Another variable-length string data type called CHARACTER LARGE OBJECT or CLOB is also available to specify columns that have large text values, such as documents. The CLOB maximum length can be specified in kilobytes (K), megabytes (M), or gigabytes (G). For example, CLOB(20M) specifies a maximum length of 20 megabytes.
-
+#$%
 Bit-string data types are either of fixed length n—BIT(n)—or varying length—BIT VARYING(7), where n is the maximum number of bits. The default for n, the length of a character string or bit string, is 1. Literal bit strings are placed between single quotes but preceded by a B to distinguish. This is not the case with SOL keywords, such as CREATE or CHAR. With keywords, SQL is case insensitive, meaning that SQL treats uppercase and lowercase letters as equivalent in keywords.
-
+#$%
 A Boolean data type has the traditional values of TRUE or FALSE. In SQL, because of the presence of NULL values, a three-valued logic is used, so a third possible value for a Boolean data type is UNKNOWN. 
-
+#$%
 The DATE data type has ten positions, and its components are YEAR, MONTH, and DAY in the form YYYY-MM-DD. The TIME data type has at least eight positions, with the components HOUR, MINUTE, and SECOND in the form HH:MM:SS. Only valid dates and times should be allowed by the SQL implementation. This implies that months should be between 1 and 12 and dates must be between 1 and 31; furthermore, a date should be a valid date for the corresponding month. The < (less than) comparison can be used with dates or times—an earlier date is considered to be smaller than a later date, and similarly with time. Literal values are represented by single-quoted strings preceded by the keyword DATE or TIME; for example, DATE ‘2008-09-27 or TIME ‘09:12:47° In addition, a data type TIME(z), where 7 is called time fractional seconds precision, specifies i + 1 additional positions for TIME—one position for an additional period (.) separator character, and i positions for specifying decimal fractions of a second. A TIME WITH TIME ZONE data type includes an additional six positions for specifying the displacement from the standard universal time zone, which is in the range +13:00 to —12:59 in units of HOURS:MINUTES. If WITH TIME ZONE is not included, the default is the local time zone for the SQL session.
-
+#$%
 Some additional data types are discussed below. The list of types discussed here is not exhaustive; different implementations have added more data types to SQL. A timestamp data type (TIMESTAMP) includes the DATE and TIME fields, plus a minimum of six positions for decimal fractions of seconds and an optional WITH TIME ZONE qualifier. Literal values are represented by single-quoted strings preceded by the keyword TIMESTAMP, with a blank space between data and time; for example, TIMESTAMP ‘2008-09-27 09:12:47.648302’.
-
+#$%
 Another data type related to DATE, TIME, and TIMESTAMP is the INTERVAL data type. This specifies an interval—a relative value that can be used to increment or decrement an absolute value of a date, time, or timestamp. Intervals are qualified to be either YEAR/MONTH intervals or DAY/TIME intervals.
-
+#$%
 Bit strings whose length is a multiple of 4 can be specified in hexadecimal notation, where the literal string is preceded by X and each hexadecimal character represents 4 bits.

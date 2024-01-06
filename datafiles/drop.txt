@@ -1,0 +1,20 @@
+The DROP command can be used to drop named schema elements, such as tables, domains, or constraints. One can also drop a schema. The DROP command can also be used to drop other types of named schema elements, such as constraints or domains.
+#$%
+For example, if a whole schema is no longer needed, the DROP SCHEMA command can be used. 
+#$%
+There are two drop behavior options: CASCADE and RESTRICT. 
+#$%
+For example, to remove the COMPANY database schema and all its tables, domains, and other elements, the CASCADE option is used as follows: DROP SCHEMA COMPANY CASCADE;
+#$%
+If the RESTRICT option is chosen in place of CASCADE, the schema is dropped only if it has no elements in it; otherwise, the DROP command will not be executed. To use the RESTRICT option, the user must first individually drop each element in the schema, then drop the schema itself.
+#$%
+If a base relation within a schema is no longer needed, the relation and its definition can be deleted by using the DROP TABLE command. 
+#$%
+For example, if we no longer wish to keep track of dependents of employees in the COMPANY database, we can get rid of the DEPENDENT relation by issuing the following command: DROP TABLE DEPENDENT CASCADE;
+#$%
+If the RESTRICT option is chosen instead of CASCADE, a table is dropped only if it is not referenced in any constraints (for example, by foreign key definitions in another relation) or views or by any other elements. 
+#$%
+With the CASCADE option, all such constraints, views, and other elements that reference the table being dropped are also dropped automatically from the schema, along with the table itself.
+#$%
+Notice that the DROP TABLE command not only deletes all the records in the table if successful, but also removes the table definition from the catalog. If it is desired to delete only the records but to leave the table definition for future use, then the DELETE command should be used instead of DROP TABLE.
+

@@ -1,0 +1,11 @@
+In its simplest form, INSERT is used to add a single tuple to a relation. We must specify the relation name and a list of values for the tuple. 
+#$%
+The values should be listed in the same order in which the corresponding attributes were specified in the CREATE TABLE command. For example, to add a new tuple to the EMPLOYEE relation, we can use: U1: INSERT INTO EMPLOYEE VALUES ( "Richard", "K", "Marini", "6532986537", "1962-12-30", "98Oak Forest", "Katy", "TX", "M", 37000, "653298653", 4 );
+#$%
+A second form of the INSERT statement allows the user to specify explicit attribute names that correspond to the values provided in the INSERT command. 
+#$%
+This is useful if a relation has many attributes but only a few of those attributes are assigned values in the new tuple. However, the values must include all attributes with NOT NULL specification and no default value. Attributes with NULL allowed or DEFAULT values are the ones that can be left out. 
+#$%
+For example, to enter a tuple for a new EMPLOYEE for whom we know only the Fname, Lname, Dno, and Ssn attributes, we can use: U1A: INSERT INTO EMPLOYEE (Fname, Lname, Dno, Ssn) VALUES ("Richard", "Marini", 4, "653298653");
+#$%
+It is also possible to insert into a relation multiple tuples separated by commas in a single INSERT command. The attribute values forming each tuple are enclosed in parentheses.

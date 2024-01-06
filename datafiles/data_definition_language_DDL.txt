@@ -1,0 +1,3 @@
+The data definition language (DDL), is used by the DBA and by database designers to define schemas. 
+#$%
+The DBMS will have a DDL compiler whose function is to process DDL statements in order to identify descriptions of the schema constructs and to store the schema description in the DBMS catalog.

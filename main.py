@@ -23,3 +23,5 @@ with driver.session() as session:
 
 # Print the result
 print("Syntax of SELECT:", syntax[0])
+
+

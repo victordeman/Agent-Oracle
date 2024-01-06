@@ -1,0 +1,6 @@
+SQL has one basic statement for retrieving information from a database: the SELECT statement. 
+#$%
+The SELECT statement is not the same as the SELECT operation of relational algebra.
+#$%
+The syntax of SELECT statement is: SELECT <attribute list> FROM <table list>;
+#$%

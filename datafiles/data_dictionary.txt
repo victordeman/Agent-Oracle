@@ -1,0 +1,11 @@
+A tool that can be quite useful in large organizations is an expanded data dictionary (or data repository) system. 
+#$%
+In addition to storing catalog information about schemas and constraints, the data dictionary stores other information, such as design decisions, usage standards, application program descriptions, and user information. Such a system is also called an information repository. This information can be accessed directly by users or the DBA when needed. 
+#$%
+A data dictionary utility is similar to the DBMS catalog, but it includes a wider variety of information and is accessed mainly by users rather than by the DBMS software.
+#$%
+Many organizations now use data dictionary systems or information repositories, which are mini DBMSs that manage meta-data—that is, data that describes the database structure, constraints, applications, authorizations, users, and so on. These are often used as an integral tool for information resource management. 
+#$%
+A useful data dictionary system should store and manage the following types of information: a. Descriptions of the schemas of the database system. b. Detailed information on physical database design, such as storage structures, access paths, and file and record sizes. c. Descriptions of the types of database users, their responsibilities, and their access rights. d. High-level descriptions of the database transactions and applications and of the relationships of users to transactions. e. The relationship between database transactions and the data items referenced by them. This is useful in determining which transactions are affected when certain data definitions are changed. f. Usage statistics such as frequencies of queries and transactions and access counts to different portions of the database. g. The history of any changes made to the database and applications, and documentation that describes the reasons for these changes. This is sometimes referred to as data provenance.
+#$%
+This meta-data is available to DBAs, designers, and authorized users as online system documentation. This improves the control of DBAs over the information system as well as the users’ understanding and use of the system. 
