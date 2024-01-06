@@ -61,11 +61,12 @@ def generate_response(question):
         print("Nodes to fetch:", nodes_to_fetch)
         explanations, embeddings = get_explanations_and_embeddings(nodes_to_fetch)
         similarities = [util.cos_sim(question_emb, emb) for emb in embeddings]
-
+        
         max_similarities = heapq.nlargest(2, similarities)
         first_max_similarity = max_similarities[0]
         second_max_similarity = max_similarities[1]
-        response  = explanations[similarities.index(first_max_similarity)]
+        
+        response  = explanations[similarities.index(first_max_similarity)]+"\n "+explanations[similarities.index(second_max_similarity)]
         #print(explanations[similarities.index(first_max_similarity)])
         return response
 

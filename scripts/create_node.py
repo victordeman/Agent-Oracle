@@ -88,7 +88,10 @@ for file_name in file_names:
     file_path = f'datafiles/{file_name}'
     with open(file_path, 'r',encoding='utf-8') as file:
         lines = file.readlines()
-        count=0
+    
+    lines=(" ").join(lines)
+    lines = lines.split('#$%')
+    count=0
     for line in lines:
         if line=='\n':
             continue
