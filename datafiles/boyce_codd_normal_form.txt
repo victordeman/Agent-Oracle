@@ -1,0 +1,3 @@
+Definition: A relation schema R is in BCNF if whenever a nontrivial functional dependency X → A holds in R, then X is a superkey of R.
+
+In practice, most relation schemas that are in 3NF are also in BCNF. Only if X → A holds in a relation schema R with X not being a superkey and A being a prime attribute will R be in 3NF but not in BCNF.

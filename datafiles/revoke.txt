@@ -1,0 +1,3 @@
+In some cases it is desirable to grant a privilege to a user temporarily. For example, the owner of a relation may want to grant the SELECT privilege to a user for a specific task and then revoke that privilege once the task is completed. Hence, a mechanism for revoking privileges is needed. In SQL a REVOKE command is included for the purpose of canceling privileges. 
+
+REVOKE SELECT ON EMPLOYEE FROM A3;
