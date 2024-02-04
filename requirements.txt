@@ -1,0 +1,16 @@
+neo4j==5.17.0  # Official Neo4j driver for Python
+sentence-transformers==2.3.1  # Sentence embeddings library
+json==1.6.3  # For working with JSON data
+numpy==1.25.1  # Numerical computation library
+os==0.10.8  # Operating system interfaces
+spacy>=3.4.3,<4.0.0  # NLP library (specifying a range to avoid potential breaking changes)
+transformers==4.25.1  # Library for transformer models
+py2neo==2022.2.4  # Alternative Neo4j driver, if needed
+concurrent.futures  # Built-in library for multithreading/multiprocessing
+warnings  # Built-in library for warning management
+heapq  # Built-in library for priority queues
+pandas==1.5.4  # Data analysis and manipulation library
+time  # Built-in library for time-related functions
+re  # Built-in library for regular expressions
+nltk==3.9.0  # Natural language processing toolkit
+collections  # Built-in library for container datatypes
