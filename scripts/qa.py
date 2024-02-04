@@ -58,7 +58,9 @@ def generate_response(question):
         nodes_to_fetch = list(islice(executor.map(lambda i: get_node_label(i, names), entities), None))
         nodes_to_fetch = [node['label'] for node in nodes_to_fetch if node['score'] == max([node['score'] for node in nodes_to_fetch])]
         nodes_to_fetch = list(set(nodes_to_fetch))
+
         #print("Nodes to fetch:", nodes_to_fetch)
+
         explanations, embeddings = get_explanations_and_embeddings(nodes_to_fetch)
         similarities = [util.cos_sim(question_emb, emb) for emb in embeddings]
 
