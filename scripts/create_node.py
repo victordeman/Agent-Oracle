@@ -75,7 +75,8 @@ def create_relationships(uri, user, password, start_node, end_nodes):
 
 clear_database(NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD)
 
-directory = 'datafiles'
+#directory = 'datafiles'
+directory = 'C://Users//dell//AMD-OEPNV//QA-Knowledge-Graph//datafiles'
 file_names = os.listdir(directory)
 
 
@@ -85,13 +86,11 @@ for file_name in file_names:
     node_data = {'Label':keyword}
     # Specify the path to your text file
 
-    file_path = f'datafiles/{file_name}'
+    #file_path = f'datafiles/{file_name}'
+    file_path = f'C://Users//dell//AMD-OEPNV//QA-Knowledge-Graph//datafiles//{file_name}'
     with open(file_path, 'r',encoding='utf-8') as file:
         lines = file.readlines()
-    
-    lines=(" ").join(lines)
-    lines = lines.split('#$%')
-    count=0
+        count=0
     for line in lines:
         if line=='\n':
             continue

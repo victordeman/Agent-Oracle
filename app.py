@@ -11,9 +11,19 @@ def index_get():
 
 @app.post("/predict")
 def predict():
+    expl, sim, max_sim = None, None, None
+    counter = 1
     text = request.get_json().get("message")
-    response = generate_response(text)
-    message = {"answer":response}
+    if text.lower() == 'more info':
+        for i in range(counter,len(sim)):
+            ansr = expl[sim.index(max_sim[i])]
+            counter +=1
+    else:
+        expl, sim, max_sim = generate_response(text)
+        ansr = expl[sim.index(max_sim[0])]
+
+    response = ansr + "\n\nIf you want to know more, type \"More info\"."
+    message = {"answer": response}
     return jsonify(message)
 
 if __name__ =="__main__":

@@ -17,11 +17,10 @@ def create_relationships(uri, user, password, start_nodes, end_nodes):
     driver.close()
 
 
-keywords = ['alter','boyce_codd_normal_form','create', 'data_definition_language_DDL','data_dictionary', 'data_independance', 'data_manipulation_language_DML',
-             'database', 'database_management_system','datatype', 'default', 'delete', 'distinct','domain', 'drop',
-            'entity_relationship_schema','first_normal_form', 'from_where','grant', 'insert', 'persistence', 'redundancy', 'referential_integrity', 'relation',
-               'rename','revoke','rules_of_codd','schema','second_normal_form', 'select','sql', 'Synchronisation','third_normal_form','three_schema_architecture',
-            'transaction','update']
+keywords = ['alter','create', 'data_definition_language_DDL','data_dictionary', 'data_independance', 'data_manipulation_language_DML',
+             'database', 'datatype', 'delete', 'domain', 'drop',
+             'insert', 'persistence', 'redundancy', 'referential_integrity', 'relation',
+               'rename','rules_of_codd','schema', 'select','sql', 'Synchronisation','transaction','update']
 
 keys_list = []
 keywords_list = []
@@ -29,10 +28,10 @@ keywords_list = []
 for keyword in keywords:
     node_data = {'Label': keyword}
 
-   # file_path = f'C:\\Users\\dell\\AMD-OEPNV\\QA-Knowledge-Graph\\datafiles\\{keyword}.txt'
-    file_path = f'datafiles/{keyword}.txt'
-   # other_files = [f'C:\\Users\\dell\\AMD-OEPNV\\QA-Knowledge-Graph\\datafiles\\{k}.txt' for k in keywords if k != keyword]
-    other_files = [f'datafiles/{k}.txt' for k in keywords if k != keyword]
+    file_path = f'C:\\Users\\dell\\AMD-OEPNV\\QA-Knowledge-Graph\\datafiles\\{keyword}.txt'
+    #file_path = f'datafiles/{keyword}.txt'
+    other_files = [f'C:\\Users\\dell\\AMD-OEPNV\\QA-Knowledge-Graph\\datafiles\\{k}.txt' for k in keywords if k != keyword]
+    #other_files = [f'datafiles/{k}.txt' for k in keywords if k != keyword]
 
     for other_file_path in other_files:
         with open(other_file_path, 'r', encoding='utf-8') as file:

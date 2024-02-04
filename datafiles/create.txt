@@ -5,3 +5,11 @@ Typically, the SQL schema in which the relations are declared is implicitly spec
 The relations declared through CREATE TABLE statements are called base tables (or base relations); this means that the relation and its tuples are actually created and stored as a file by the DBMS. Base relations are distinguished from virtual relations, created through the CREATE VIEW statement which may or may not correspond to an actual physical file. In SQL, the attributes in a base table are considered to be ordered in the sequence in which they are specified in the CREATE TABLE statement. However, rows (tuples) are not considered to be ordered within a relation.
 #$%
 Syntax is as mentioned : CREATE TABLE table_name (column1 datatype, column2 datatype,datatype,....);
+#$%
+It is also possible to define a default value for an attribute by appending the clause DEFAULT <value> to an attribute definition.
+#$%
+The default value is included in any new tuple if an explicit value is not provided for that attribute.
+#$%
+If no default clause is specified, the default default value is NULL for attributes that do not have the NOT NULL constraint.
+#$%
+Example: CREATE TABLE EMPLOYEE( . . . , Dno INT NOT NULL DEFAULT 1, CONSTRAINT EMPPK PRIMARY KEY (Ssn), CONSTRAINT EMPSUPERFK FOREIGN KEY (Super_ssn) REFERENCES EMPLOYEE(Ssn) ON DELETE SET NULL ON UPDATE CASCADE, CONSTRAINT EMPDEPTFK FOREIGN KEY(Dno) REFERENCES DEPARTMENT(Dnumber) ON DELETE SET DEFAULT ON UPDATE CASCADE);

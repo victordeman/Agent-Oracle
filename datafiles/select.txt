@@ -2,5 +2,20 @@ SQL has one basic statement for retrieving information from a database: the SELE
 #$%
 The SELECT statement is not the same as the SELECT operation of relational algebra.
 #$%
-The syntax of SELECT statement is: SELECT <attribute list> FROM <table list>;
+The basic form of the SELECT statement, sometimes called a mapping or a select-from-where block, is formed of the three clauses SELECT, FROM, and WHERE. The syntax is : SELECT <attribute list> FROM <table list> WHERE <condition>; where <attribute list> is a list of attribute names whose values are to be retrieved by the query, <table list> is a list of the relation names required to process the query, <condition> is a conditional (Boolean) expression that identifies the tuples to be retrieved by the query.
 #$%
+Example: SELECT Bdate, Address FROM EMPLOYEE WHERE Fname= "John" AND Minit= "B" AND Lname= "Smith"; This query involves only the EMPLOYEE relation listed in the FROM clause. The query selects the individual EMPLOYEE tuples that satisfy the condition of the WHERE clause, then projects the result on the Bdate and Address attributes listed in the SELECT clause.
+#$%
+The SELECT clause of SQL specifies the attributes whose values are to be retrieved, which are called the projection attributes, and the WHERE clause specifies the Boolean condition that must be true for any retrieved tuple, which is known as the selection condition.
+#$%
+The SELECT and FROM clauses are required in all SQL queries. The WHERE is optional.
+#$%
+An SQL table with a key is restricted to being a set, since the key value must be distinct in each tuple. If we do want to eliminate duplicate tuples from the result of an SQL query, we use the keyword DISTINCT in the SELECT clause, meaning that only distinct tuples should remain in the result.
+#$%
+In general, a query with SELECT DISTINCT eliminates duplicates, whereas a query with SELECT ALL does not.
+#$%
+Specifying SELECT with neither ALL nor DISTINCT is equivalent to SELECT ALL.
+#$%
+For example, Q11 retrieves the salary of every employee; if several employees have the same salary, that salary value will appear as many times in the result of the query. Qi1: SELECT ALL Salary FROM EMPLOYEE;
+#$%
+If we are interested only in distinct salary values, we want each value to appear only once, regardless of how many employees earn that salary. By using the keyword DISTINCT as in Q11A, we accomplish this. Q11A: SELECT DISTINCT Salary FROM EMPLOYEE;

@@ -22,7 +22,7 @@ def identify_entities(question):
     doc = nlp(question)
     keyword_pos = ["NOUN", "PROPN", "ADJ"]
     keywords = [token.text.lower() for token in doc if token.pos_ in keyword_pos]
-    print("Keywords: ", keywords)
+    #print("Keywords: ", keywords)
     return keywords
 
 
@@ -58,17 +58,16 @@ def generate_response(question):
         nodes_to_fetch = list(islice(executor.map(lambda i: get_node_label(i, names), entities), None))
         nodes_to_fetch = [node['label'] for node in nodes_to_fetch if node['score'] == max([node['score'] for node in nodes_to_fetch])]
         nodes_to_fetch = list(set(nodes_to_fetch))
-        print("Nodes to fetch:", nodes_to_fetch)
+        #print("Nodes to fetch:", nodes_to_fetch)
         explanations, embeddings = get_explanations_and_embeddings(nodes_to_fetch)
         similarities = [util.cos_sim(question_emb, emb) for emb in embeddings]
-        
-        max_similarities = heapq.nlargest(2, similarities)
-        first_max_similarity = max_similarities[0]
-        second_max_similarity = max_similarities[1]
-        
-        response  = explanations[similarities.index(first_max_similarity)]+"\n "+explanations[similarities.index(second_max_similarity)]
+
+        max_similarities = heapq.nlargest(len(similarities), similarities)
+        #first_max_similarity = max_similarities[0]
+        #second_max_similarity = max_similarities[1]
+        #response  = explanations[similarities.index(first_max_similarity)]
         #print(explanations[similarities.index(first_max_similarity)])
-        return response
+        return explanations, similarities, max_similarities
 
 # if __name__ == "__main__":
 #     question = "Explain the terms Database (DB), Database System (DBS) and Database Management System (DBMS)!"

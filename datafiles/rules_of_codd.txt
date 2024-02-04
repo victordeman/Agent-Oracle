@@ -10,12 +10,7 @@ Rule 3: Systematic treatment of null values: Null values (distinct from the empt
 #$%
 Rule 4: Dynamic online catalog based on the relational model: The data base description is represented at the logical level in the same way as ordinary data, so that authorized users can apply the same relational language to its interrogation as they apply to the regular data.
 #$%
-Rule 5: The comprehensive data sublanguage rule: A relational system may support several languages and various modes of terminal use (for example, the fill-in-the-blanks mode). However, there must be at least one language whose statements are expressible, per some well-defined syntax, as character strings and that is comprehensive in supporting all of the following items: Data definition.
-View definition.
-Data manipulation (interactive and by program).
-Integrity constraints.
-Authorization.
-Transaction boundaries (begin, commit and rollback).
+Rule 5: The comprehensive data sublanguage rule: A relational system may support several languages and various modes of terminal use (for example, the fill-in-the-blanks mode). However, there must be at least one language whose statements are expressible, per some well-defined syntax, as character strings and that is comprehensive in supporting the following items: Data definition, View definition, Data manipulation (interactive and by program), Integrity constraints, Authorization, Transaction boundaries (begin, commit and rollback).
 #$%
 Rule 6: The view updating rule: All views that are theoretically updatable are also updatable by the system.
 #$%
