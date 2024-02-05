@@ -19,6 +19,6 @@ if __name__ =="__main__":
                 response = ansr + "\nIf you want to know more, type \"More info\"."
                 print(response)
             else:
-                response = "Sorry, I don't know about that!"
+                print("Sorry, I don't know about that!")
         else:
             print("That's all the information we've got. Sorry!")

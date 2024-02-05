@@ -28,7 +28,7 @@ def predict():
     else:
         ansr = "That's all the information we've got. Sorry!"
 
-    ansr += " If you want to know more, type \"More info\"."
+    ansr += "\n   If you want to know more, type \"More info\"."
     message = {"answer": ansr}
     return jsonify(message)
 

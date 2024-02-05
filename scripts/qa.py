@@ -27,13 +27,13 @@ def identify_entities(question):
 
 
 def get_node_label(entity, names):
-
     for i in names:
         if entity.lower() in i.lower():
             return {'label': i, 'score': 1.0}
     else:
         label = classifier(entity, names)
-        return {'label': label['labels'][0], 'score': label['scores'][0]}
+        if label['scores'][0] > 0.8:
+            return {'label': label['labels'][0], 'score': label['scores'][0]}
 
 def get_explanations_and_embeddings(nodes_to_fetch):
     if not nodes_to_fetch:
@@ -56,25 +56,21 @@ def generate_response(question):
         names = [record["c.name"] for record in result]
 
         nodes_to_fetch = list(islice(executor.map(lambda i: get_node_label(i, names), entities), None))
-        nodes_to_fetch = [node['label'] for node in nodes_to_fetch if node['score'] == max([node['score'] for node in nodes_to_fetch])]
-        nodes_to_fetch = list(set(nodes_to_fetch))
+        nodes_to_fetch = list(filter(None, nodes_to_fetch))
+        #print(nodes_to_fetch)
 
-        #print("Nodes to fetch:", nodes_to_fetch)
+        if not nodes_to_fetch:
+            return [], [], []
+        else:
+            nodes_to_fetch = [node['label'] for node in nodes_to_fetch if node['score'] == max([node['score'] for node in nodes_to_fetch])]
+            nodes_to_fetch = list(set(nodes_to_fetch))
 
-        explanations, embeddings = get_explanations_and_embeddings(nodes_to_fetch)
-        similarities = [util.cos_sim(question_emb, emb) for emb in embeddings]
+            explanations, embeddings = get_explanations_and_embeddings(nodes_to_fetch)
+            similarities = [util.cos_sim(question_emb, emb) for emb in embeddings]
 
-        max_similarities = heapq.nlargest(len(similarities), similarities)
-        #first_max_similarity = max_similarities[0]
-        #second_max_similarity = max_similarities[1]
-        #response  = explanations[similarities.index(first_max_similarity)]
-        #print(explanations[similarities.index(first_max_similarity)])
-        return explanations, similarities, max_similarities
-
-# if __name__ == "__main__":
-#     question = "Explain the terms Database (DB), Database System (DBS) and Database Management System (DBMS)!"
-
-#     with concurrent.futures.ThreadPoolExecutor() as executor:
-#         generate_response(question)
-
-#generate_response("what is the first rule of Codd?")
+            max_similarities = heapq.nlargest(len(similarities), similarities)
+            #first_max_similarity = max_similarities[0]
+            #second_max_similarity = max_similarities[1]
+            #response  = explanations[similarities.index(first_max_similarity)]
+            #print(explanations[similarities.index(first_max_similarity)])
+            return explanations, similarities, max_similarities
