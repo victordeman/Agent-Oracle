@@ -17,10 +17,12 @@ def create_relationships(uri, user, password, start_nodes, end_nodes):
     driver.close()
 
 
-keywords = ['alter','create', 'data_definition_language_DDL','data_dictionary', 'data_independance', 'data_manipulation_language_DML',
-             'database', 'datatype', 'delete', 'domain', 'drop',
+keywords = ['alter', 'boyce_codd_normal_form', 'create', 'data_definition_language_DDL','data_dictionary', 'data_independance',
+            'data_manipulation_language_DML', 'database', 'database_management_system', 'datatype', 'default', 'delete', 'domain',
+            'drop', 'entity_relationship_schema', 'first_normal_form', 'from_where', 'grant'
              'insert', 'persistence', 'redundancy', 'referential_integrity', 'relation',
-               'rename','rules_of_codd','schema', 'select','sql', 'Synchronisation','transaction','update']
+               'rename', 'revoke', 'rules_of_codd','schema', 'second_normal_form', 'select','sql', 'Synchronisation',
+            'third_normal_form', 'transaction','update']
 
 keys_list = []
 keywords_list = []
